@@ -1,12 +1,12 @@
 # extending the Thread class
-from time import sleep, ctime
 from threading import Thread
+from time import sleep, ctime
 
 # custom thread class
 class CustomThread(Thread):
     # override the run function
     def run(self):
-        # block for a moment
+        # block for a momentAdd commentMore actions
         sleep(1)
         # display a message
         print(f'{ctime()} This is coming from another thread')
