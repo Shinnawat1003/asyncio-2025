@@ -1,5 +1,4 @@
-# Using a ThreadPoolExecutor
-import concurrent.futuresAdd commentMore actions
+import concurrent.futures
 import logging
 import time
 

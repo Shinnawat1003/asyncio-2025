@@ -1,4 +1,3 @@
-# Starting a Thread
 import threading
 import logging
 import time
@@ -14,7 +13,7 @@ if __name__ == "__main__":
                         datefmt="%H:%M:%S")
 
     logging.info("Main: before creating thread")
-    x = threading.Thread(target=thread_function, args=(1,))Add commentMore actions
+    x = threading.Thread(target=thread_function, args=(1,))
     logging.info("Main: before running thread")
     x.start()
     logging.info("Main: wait for the thread to finish")

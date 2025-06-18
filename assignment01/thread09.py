@@ -1,6 +1,5 @@
-# Basic Synchronization Using Lock
 import concurrent.futures
-import loggingAdd commentMore actions
+import logging
 import threading
 import time
 
