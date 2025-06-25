@@ -1,10 +1,13 @@
-# check the type of a corutine
+# check the type of a coroutine
 import asyncio
-#define a coroutine
+
+# define a coroutine
 async def custom_coro():
-    #await another coroutine
+    # await another coroutine
     await asyncio.sleep(1)
-#create the corutine
+
+# create the coroutine
 coro = custom_coro()
-#check the type of the corutine
+
+# check the type of the coroutine
 print(type(coro))
