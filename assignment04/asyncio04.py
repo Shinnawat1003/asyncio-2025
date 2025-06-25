@@ -14,9 +14,9 @@ async def main():
     # print(f'{time.ctime()} main coroutine started')
 
     # start many tasks
-    started_tasks = [asyncio.create_task(download_image("รูปที่ 0", 3)),
+    started_tasks = [asyncio.create_task(download_image("รูปที่ 2", 1)),
         asyncio.create_task(download_image("รูปที่ 1", 2)),  # โหลดเสร็จก่อนแบบเจาะจงเลย
-        asyncio.create_task(download_image("รูปที่ 2", 1)),
+        asyncio.create_task(download_image("รูปที่ 0", 3)),
     ]
     # allow some of the tasks time to start
     await asyncio.sleep(0.1)
