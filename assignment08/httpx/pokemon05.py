@@ -24,9 +24,9 @@ async def main():
     tasks = [fetch_pokemon_data(name) for name in names]
     results = await asyncio.gather(*tasks)
 
-    sorted_results = sorted(results, key=get_base_experience, reverse=True)
+    sorted_results = sorted(results, key=get_base_experience, reverse=True) 
 
-    print("• Pokemon Data (sorted by base_experience):")
+    print("Pokemon Data (sorted by base_experience):")
     for p in sorted_results:
         print(f"  {p['name']:12} | ID: {p['id']:3} | Base XP: {p['base_experience']}")
 
