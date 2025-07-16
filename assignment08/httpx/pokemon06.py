@@ -2,7 +2,7 @@ import asyncio
 import httpx
 
 async def fetch_ability_list():
-    url = "https://pokeapi.co/api/v2/ability/?limit=10"
+    url = "https://pokeapi.co/api/v2/ability/?limit=20"
     async with httpx.AsyncClient() as client:
         response = await client.get(url)
         return response.json()["results"]
