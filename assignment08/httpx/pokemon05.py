@@ -17,17 +17,17 @@ async def fetch_pokemon_data(name):
             "base_experience": data["base_experience"]
         }
 
+def get_base_experience(pokemon):
+    return pokemon["base_experience"]
+
 async def main():
     tasks = [fetch_pokemon_data(name) for name in names]
     results = await asyncio.gather(*tasks)
 
-    # เรียงจาก base_experience มาก -> น้อย
-    sorted_results = sorted(results, key=lambda x: x["base_experience"], reverse=True)
+    sorted_results = sorted(results, key=get_base_experience, reverse=True)
 
-    # แสดงผล
     print("• Pokemon Data (sorted by base_experience):")
     for p in sorted_results:
         print(f"  {p['name']:12} | ID: {p['id']:3} | Base XP: {p['base_experience']}")
 
-# รันโปรแกรม
 asyncio.run(main())
