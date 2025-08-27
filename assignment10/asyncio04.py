@@ -34,24 +34,32 @@ async def cashier(name: str, secs_per_item: float, queue: asyncio.Queue):
 
 # ---------- Main ----------
 async def main():
-    queue = asyncio.Queue()
+    # คิวรองรับได้สูงสุด 5 งาน
+    queue = asyncio.Queue(maxsize=5)
 
     # แคชเชียร์ 2 คน: คนละความเร็ว
     c1 = asyncio.create_task(cashier("1", 1.0, queue))  # 1 วินาที/ชิ้น
     c2 = asyncio.create_task(cashier("2", 2.0, queue))  # 2 วินาที/ชิ้น
 
-    # ลูกค้า 3 คน (แต่ละคน = 1 งานบนคิว)
+    # ลูกค้า 10 คน
     producers = [
         customer_producer(queue, "Alice",   ["Apple", "Banana", "Milk"]),
         customer_producer(queue, "Bob",     ["Bread", "Cheese"]),
         customer_producer(queue, "Charlie", ["Eggs", "Juice", "Butter"]),
+        customer_producer(queue, "David",   ["Orange", "Yogurt"]),
+        customer_producer(queue, "Eve",     ["Tomato", "Potato", "Onion"]),
+        customer_producer(queue, "Frank",   ["Chicken", "Rice"]),
+        customer_producer(queue, "Grace",   ["Fish", "Lemon"]),
+        customer_producer(queue, "Heidi",   ["Pasta", "Sauce"]),
+        customer_producer(queue, "Ivan",    ["Cereal", "Milk"]),
+        customer_producer(queue, "Judy",    ["Coffee", "Sugar"]),
     ]
     await asyncio.gather(*producers)
 
     # รอให้ทุกออเดอร์ถูกคิดเงินครบ
     await queue.join()
 
-    # ปิดร้าน: ยกเลิกแคชเชียร์ทั้งสอง (ลูปไม่มีวันจบเอง)
+    # ปิดร้าน: ยกเลิกแคชเชียร์ทั้งสอง
     for t in (c1, c2):
         t.cancel()
     for t in (c1, c2):
