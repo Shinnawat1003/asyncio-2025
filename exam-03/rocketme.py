@@ -1,6 +1,6 @@
 import time
 
-student_id = "1234567890"
+student_id = "6610301003"
 
 async def fire_rocket(name: str, t0: float):
     url = f"http://172.16.2.117:8088/fire/{student_id}"
